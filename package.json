@@ -1,17 +1,62 @@
 {
-  "name": "",
-  "version": "",
-  "description": "",
+  "name": "hrsf129-front-end-capstone",
+  "version": "1.0.0",
+  "description": "> Project description",
+  "main": ".eslintrc.js",
   "author": "",
   "license": "",
   "engines": {
     "node": ">=6.13.0"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Glity/photo-gallery.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Glity/photo-gallery/issues"
+  },
+  "homepage": "https://github.com/Glity/photo-gallery#readme",
   "scripts": {
+    "start": "nodemon server/index.js",
+    "react-dev": "webpack -d --watch",
+    "seed": "node ./seed.js"
   },
   "dependencies": {
+    "babel-jest": "^26.2.2",
+    "express": "^4.17.1",
+    "faker": "^4.1.0",
+    "google-fonts-webpack-plugin": "^0.4.4",
+    "lodash": "^4.17.19",
+    "mongodb": "^3.6.0",
+    "mongoose": "^5.9.28",
+    "node-fetch": "^2.6.0",
+    "nodemon": "^2.0.4",
+    "prop-types": "^15.7.2",
+    "puppeteer-core": "^5.2.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
   },
   "devDependencies": {
-    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor"
+    "@babel/cli": "^7.10.5",
+    "@babel/core": "^7.11.1",
+    "@babel/preset-env": "^7.11.0",
+    "@babel/preset-react": "^7.10.4",
+    "babel-loader": "^8.1.0",
+    "css-loader": "^4.2.1",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.3",
+    "eslint": "^7.6.0",
+    "eslint-config-airbnb": "^18.2.0",
+    "eslint-config-node": "^4.1.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-jsx-a11y": "^6.3.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-react": "^7.20.5",
+    "eslint-plugin-react-hooks": "^4.0.0",
+    "jest": "^26.2.2",
+    "style-loader": "^1.2.1",
+    "supertest": "^4.0.2",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12"
   }
 }
