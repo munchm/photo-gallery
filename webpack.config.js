@@ -24,12 +24,11 @@ module.exports = {
     ],
   },
   resolve: { extensions: ['.js', '.jsx'] },
-  plugins: [
-    new GoogleFontsPlugin({
-      fonts: [
-        { family: 'Source Sans Pro' },
-        { family: 'Roboto', variants: ['400', '700italic'] },
-      ],
-    }),
-  ],
+  // plugins: [
+  //   new GoogleFontsPlugin({
+  //     fonts: [
+  //       { family: 'Roboto', variants: ['400', '700italic'] },
+  //     ],
+  //   }),
+  // ],
 };

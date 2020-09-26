@@ -5,7 +5,7 @@ const db = require('./db');
 const { photo } = db;
 
 const flushDb = () => {
-  videogame.remove({}, (err, success) => {
+  photo.remove({}, (err, success) => {
     if (err) {
       console.err(err);
     } else {
