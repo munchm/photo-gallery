@@ -21,13 +21,25 @@ const getAllPhotos = function(callback) {
   });
 };
 
+const getPhotoById = (id, callback) => {
+  model.photo.find({photoId: id }, (err, data) => {
+    if(err) {
+      throw err;
+    }
+    else {
+      callback(data);
+    }
+  })
+}
+
 app.get('/', (req, res) => {
   res.status(201).send('success!');
 });
 
-app.get('/photos', (req, res) => {
+app.get('/photos/:id', (req, res) => {
+  const pageId = req.params.id;
   // cosole.log(model.videogame.find)
-  getAllPhotos((data) => {
+  getPhotoById(pageId, (data) => {
     res.status(200).send(data);
   });
 });

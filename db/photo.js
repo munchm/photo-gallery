@@ -1,14 +1,14 @@
 const mongoose = require('mongoose');
 
 const photoSchema = mongoose.Schema({
-  currentImage: String,
+  photoId: Number,
   imageList: [String],
-  review: String,
-  userId: Number,
-  helpful: Number,
-  notHelpful: Number
+  reviewList: [String],
+  userList: [Number],
+  helpfulList: [Number],
+  notHelpfulList: [Number]
 });
 
-const photo = mongoose.model('Photo', photoSchema);
+const photo = mongoose.model('Photox', photoSchema);
 
 module.exports = photo;

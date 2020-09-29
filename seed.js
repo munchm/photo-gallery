@@ -21,20 +21,30 @@ const seedPhotos = () => {
   const result = [];
 
   for(let i = 0; i < 100; i++) {
+
     const dataItem = {};
+    dataItem.photoId = i;
+
     dataItem.imageList = [];
+    dataItem.reviewList = [];
+    dataItem.helpfulList = [];
+    dataItem.notHelpfulList = [];
+    dataItem.userList = [];
 
     // push 15 pictures into image list
     for(let k = 0; k < 15; k++) {
-      dataItem.imageList.push(`https://yelp-photos.s3.us-east-2.amazonaws.com/168s+(${k}).jpg`);
-    };
-    // set current image to first image
-    dataItem.currentImage = 'https://yelp-photos.s3.us-east-2.amazonaws.com/168s+(1).jpg';
+      let randNum = Math.floor(Math.random() * 100);
+      let randHelpful = Math.floor(Math.random() * 500);
+      let randNotHelpful = Math.floor(Math.random() * 500);
+      let randReview = faker.lorem.sentence(25);
+      dataItem.userList.push(k);
+      // push 15 image urls into imageList
+      dataItem.imageList.push(`https://yelp-photos.s3.us-east-2.amazonaws.com/168s+(${randNum}).jpg`);
 
-    dataItem.review = faker.lorem.sentence(25);
-    userId = i;
-    dataItem.helpful = faker.random.number();
-    dataItem.notHelpful = faker.random.number();
+      dataItem.helpfulList.push(randHelpful);
+      dataItem.notHelpfulList.push(randNotHelpful);
+      dataItem.reviewList.push(randReview);
+    };
 
     const photoModel = new db.photo(dataItem);
     const savedData = photoModel.save();
