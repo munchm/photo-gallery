@@ -1,10 +1,10 @@
 import React from 'react';
 
 const Photo = (props) => {
-  console.log(props);
+  console.log("props in Photo.jsx: ",props);
   return (
     <li>
-      <img src={props.photo.currerntImage} />
+      <img src={props.photo} />
     </li>
   );
 

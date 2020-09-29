@@ -9,6 +9,6 @@ const photoSchema = mongoose.Schema({
   notHelpfulList: [Number]
 });
 
-const photo = mongoose.model('Photox', photoSchema);
+const photo = mongoose.model('Photo', photoSchema);
 
 module.exports = photo;

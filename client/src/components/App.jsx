@@ -6,8 +6,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      dataList: [],
-      pageBanner: [],
+      pageBanner: []
     };
     this.getPhotos =this.getPhotos.bind(this)
   }
@@ -17,23 +16,22 @@ class App extends React.Component {
   }
 
   getPhotos() {
-    fetch('/photos')
+    fetch('/photos/1')
     .then((res) => res.json())
     .then((data)=>{
-      console.log(data);
-      let pageBanner = data.slice(0, 5);
-      console.log("pageBanner: ",pageBanner);
+      console.log("data: ", data);
 
       this.setState({
-        pageBanner: pageBanner,
+        pageBanner: data[0].imageList,
       })
     })
   }
 
   render() {
+    console.log('pageBanner on App: ', this.state.pageBanner);
     return (
       <div>
-        <PhotoList photos={this.state.dataList} />
+        <PhotoList photos={this.state.pageBanner} />
       </div>
     );
   }

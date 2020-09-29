@@ -2,7 +2,7 @@ import React from 'react';
 import Photo from './Photo.jsx';
 
 const PhotoList = (props) => {
-  console.log(props);
+  console.log("photoList: ",props);
   return (
     <ul>
       {props.photos.map((photo)=>{

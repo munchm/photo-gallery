@@ -33,13 +33,13 @@ const seedPhotos = () => {
 
     // push 15 pictures into image list
     for(let k = 0; k < 15; k++) {
-      let randNum = Math.floor(Math.random() * 100);
+      let randNum = Math.floor(Math.random() * 36);
       let randHelpful = Math.floor(Math.random() * 500);
       let randNotHelpful = Math.floor(Math.random() * 500);
       let randReview = faker.lorem.sentence(25);
       dataItem.userList.push(k);
       // push 15 image urls into imageList
-      dataItem.imageList.push(`https://yelp-photos.s3.us-east-2.amazonaws.com/168s+(${randNum}).jpg`);
+      dataItem.imageList.push(`https://yelp-photos.s3.us-east-2.amazonaws.com/300s+(${randNum}).jpg`);
 
       dataItem.helpfulList.push(randHelpful);
       dataItem.notHelpfulList.push(randNotHelpful);
