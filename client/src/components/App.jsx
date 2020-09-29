@@ -1,11 +1,14 @@
 import React from 'react';
 import fetch from 'node-fetch'
 import PhotoList from './PhotoList.jsx';
+import Header from './Header.jsx';
+import Body from './Body.jsx';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      data: [],
       pageBanner: []
     };
     this.getPhotos =this.getPhotos.bind(this)
@@ -22,7 +25,8 @@ class App extends React.Component {
       console.log("data: ", data);
 
       this.setState({
-        pageBanner: data[0].imageList,
+        data: data[0],
+        pageBanner: data[0].imageList.slice(0,4),
       })
     })
   }
@@ -31,7 +35,9 @@ class App extends React.Component {
     console.log('pageBanner on App: ', this.state.pageBanner);
     return (
       <div>
+        <Header />
         <PhotoList photos={this.state.pageBanner} />
+        <Body />
       </div>
     );
   }
