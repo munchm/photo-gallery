@@ -11,3 +11,7 @@ app.use(express.static(path.join(__dirname, '/../public')));
 app.get('/', (req, res) => {
   res.status(201).send('success!');
 });
+
+app.listen(3003, () => {
+  console.log('listening on PORT: 3003');
+});

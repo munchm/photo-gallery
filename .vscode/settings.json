@@ -1,13 +1,13 @@
 {
-  "editor.lightbulb.enabled": false,
-  "editor.parameterHints.enabled": false,
+  "editor.lightbulb.enabled": true,
+  "editor.parameterHints.enabled": true,
   "editor.renderWhitespace": "all",
-  "editor.snippetSuggestions": "none",
+  "editor.snippetSuggestions": "inline",
   "editor.tabSize": 2,
   "editor.wordWrap": "on",
-  "emmet.showExpandedAbbreviation": "never",
+  "emmet.showExpandedAbbreviation": "true",
   "files.trimTrailingWhitespace": true,
-  "javascript.suggest.enabled": false,
-  "javascript.updateImportsOnFileMove.enabled": "never",
-  "javascript.validate.enable": false
+  "javascript.suggest.enabled": true,
+  "javascript.updateImportsOnFileMove.enabled": "prompt",
+  "javascript.validate.enable": true
 }
