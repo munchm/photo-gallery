@@ -1,12 +1,14 @@
 import React from 'react';
 import Photo from './Photo.jsx';
+import classes from '../style/App.module.css';
 
 const PhotoList = (props) => {
-  console.log("photoList: ",props);
+  console.log("photoList: ", props);
+
   return (
-    <ul>
-      {props.photos.map((photo)=>{
-        return <Photo photo={photo}/>
+    <ul className={classes.body} >
+      {props.photos.map((photo, key)=>{
+        return <Photo key={key} photo={photo}/>
       })
       }
     </ul>

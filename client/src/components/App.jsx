@@ -3,6 +3,7 @@ import fetch from 'node-fetch'
 import PhotoList from './PhotoList.jsx';
 import Header from './Header.jsx';
 import Body from './Body.jsx';
+import classes from '../style/App.module.css';
 
 class App extends React.Component {
   constructor(props) {

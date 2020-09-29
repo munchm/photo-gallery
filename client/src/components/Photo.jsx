@@ -1,10 +1,11 @@
 import React from 'react';
+import classes from '../style/Photo.module.css';
 
 const Photo = (props) => {
   console.log("props in Photo.jsx: ",props);
   return (
-    <li>
-      <img src={props.photo} />
+    <li className={classes.listWidth} >
+      <img className={classes.picWidth} src={props.photo} />
     </li>
   );
 
