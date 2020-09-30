@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const photo = require('./photo.js');
 
-mongoose.connect('mongodb://localhost:27017/videogame', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('mongodb://localhost:27017/photo', { useNewUrlParser: true, useUnifiedTopology: true });
 
 mongoose.connection.on('connected', () => {
   console.log('Mongoose default connection open to: 3003');
@@ -24,6 +24,7 @@ mongoose.connection.on('disconnected', () => {
 // });
 
 // const Repo = mongoose.model('Repo', repoSchema);
+
 module.exports = {
   photo: photo,
 };
