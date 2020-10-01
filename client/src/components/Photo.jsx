@@ -1,5 +1,5 @@
 import React from 'react';
-import classes from '../style/Photo.module.css';
+// import classes from '../style/Photo.module.css';
 
 const Photo = (props) => {
   console.log("props in Photo.jsx: ",props);

@@ -17,6 +17,9 @@
   },
   "homepage": "https://github.com/Glity/photo-gallery#readme",
   "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage --colors",
     "start": "nodemon server/index.js",
     "react-dev": "webpack -d --watch",
     "seed": "node ./seed.js"
@@ -26,6 +29,7 @@
     "express": "^4.17.1",
     "faker": "^4.1.0",
     "google-fonts-webpack-plugin": "^0.4.4",
+    "identity-obj-proxy": "^3.0.0",
     "lodash": "^4.17.19",
     "mongodb": "^3.6.0",
     "mongoose": "^5.9.28",
@@ -60,4 +64,5 @@
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12"
   }
+
 }
