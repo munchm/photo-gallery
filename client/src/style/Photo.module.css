@@ -1,8 +1,10 @@
 .listWidth {
   width: 25%;
   height:16.667vw;
+  margin-left: 5px;
 }
 
 .picWidth {
   width: 100%;
+  cursor: pointer;
 }

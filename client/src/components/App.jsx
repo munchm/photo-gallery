@@ -4,15 +4,24 @@ import PhotoList from './PhotoList.jsx';
 import Header from './Header.jsx';
 import Body from './Body.jsx';
 import classes from '../style/App.module.css';
+import Modal from './modal/Modal.jsx';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       data: [],
-      pageBanner: []
+      pageBanner: [],
+      imageList: [],
+      currentImage: null,
+      showModal: false,
     };
-    this.getPhotos =this.getPhotos.bind(this)
+
+    this.getPhotos = this.getPhotos.bind(this);
+    this.toggleModal = this.toggleModal.bind(this);
+    this.incrementModalImage = this.incrementModalImage.bind(this);
+    this.decrementModalImage = this.decrementModalImage.bind(this);
+    this.toggleModalPic = this.toggleModalPic.bind(this);
   }
 
   componentDidMount() {
@@ -21,24 +30,96 @@ class App extends React.Component {
 
   getPhotos() {
     fetch('/photos/1')
-    .then((res) => res.json())
-    .then((data)=>{
-      console.log("data: ", data);
+      .then((res) => res.json())
+      .then((data) => {
+        this.setState({
+          data: data[0],
+          pageBanner: data[0].imageList.slice(0,4),
+          currentImage: data[0].imageList[0],
+          imageList: data[0].imageList,
+        });
+      });
+  }
 
-      this.setState({
-        data: data[0],
-        pageBanner: data[0].imageList.slice(0,4),
-      })
-    })
+  incrementModalImage() {
+    this.setState((state) => {
+      const temp = state.imageList.slice();
+      let currentImageIndex = temp.indexOf(this.state.currentImage);
+      if (currentImageIndex === temp.length - 1) {
+        currentImageIndex = 0;
+      } else {
+        currentImageIndex += 1;
+      }
+
+      return {
+        currentImage: temp[currentImageIndex],
+      };
+    }
+    );
+  }
+
+  decrementModalImage() {
+    this.setState((state) => {
+      const temp = state.imageList.slice();
+      let currentImageIndex = temp.indexOf(this.state.currentImage);
+      if (currentImageIndex === 0) {
+        currentImageIndex = temp.length - 1;
+      } else {
+        currentImageIndex -= 1;
+      }
+
+      return {
+        currentImage: temp[currentImageIndex],
+      };
+    });
+  }
+
+  toggleModal() {
+    this.setState((state) => {
+      const temp = state.showModal;
+      return {
+        showModal: !temp,
+      };
+    });
+  }
+  toggleModalPic(evt) {
+    // evt.persist();
+    // console.log(evt);
+    // if (evt.target.localname === 'image') {
+    //   return;
+    // }
+    this.setState((state) => {
+      const temp = state.showModal;
+      return {
+        showModal: !!temp,
+      };
+    });
   }
 
   render() {
-    console.log('pageBanner on App: ', this.state.pageBanner);
+    const { pageBanner, data, currentImage, showModal } = this.state;
     return (
-      <div>
-        <Header />
-        <PhotoList photos={this.state.pageBanner} />
-        <Body />
+      <div onClick={this.toggleModal} >
+        <div>
+          <Header />
+          <PhotoList
+          toggleModal={this.toggleModalPic}
+          photos={pageBanner} />
+          <Body />
+        </div>
+        {
+          showModal
+            ? (
+              <Modal
+                data={data}
+                next={this.incrementModalImage}
+                prev={this.decrementModalImage}
+                className={classes.modal}
+                currentImage={currentImage}
+              />
+            )
+            : ''
+        }
       </div>
     );
   }
