@@ -21,6 +21,7 @@ class App extends React.Component {
     this.toggleModal = this.toggleModal.bind(this);
     this.incrementModalImage = this.incrementModalImage.bind(this);
     this.decrementModalImage = this.decrementModalImage.bind(this);
+    this.toggleModalPic = this.toggleModalPic.bind(this);
   }
 
   componentDidMount() {
@@ -81,15 +82,29 @@ class App extends React.Component {
       };
     });
   }
+  toggleModalPic(evt) {
+    // evt.persist();
+    // console.log(evt);
+    // if (evt.target.localname === 'image') {
+    //   return;
+    // }
+    this.setState((state) => {
+      const temp = state.showModal;
+      return {
+        showModal: !!temp,
+      };
+    });
+  }
 
   render() {
     const { pageBanner, data, currentImage, showModal } = this.state;
     return (
-      <div>
+      <div onClick={this.toggleModal} >
         <div>
           <Header />
-          <PhotoList photos={pageBanner} />
-          <button type="button" onClick={this.toggleModal}>Show Modal</button>
+          <PhotoList
+          toggleModal={this.toggleModalPic}
+          photos={pageBanner} />
           <Body />
         </div>
         {

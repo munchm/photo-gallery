@@ -6,23 +6,25 @@ import ChevronPrev from './ChevronPrev.jsx';
 
 
 const Main = (props) => {
-  console.log('props in modal/Main: ', props.currentImage);
+  const { currentImage, next, prev } = props;
   return (
     <div className={classes.bgMain}>
       <div className={classes.modalWrapper}>
         <div className={classes.leftPanel}>
           <div className={classes.imageContainer}>
             <img
-            className={classes.image}
-            src={props.currentImage} />
+              alt=""
+              className={classes.image}
+              src={currentImage}
+            />
           </div>
-        <ChevronNext next={props.next}/>
-        <ChevronPrev prev={props.prev}/>
+          <ChevronNext next={next} />
+          <ChevronPrev prev={prev} />
         </div>
         <SideBar />
+      </div>
     </div>
-    </div>
-  )
-}
+  );
+};
 
 export default Main;
