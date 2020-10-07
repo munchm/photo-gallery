@@ -19,7 +19,7 @@
   "scripts": {
     "test": "jest",
     "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage --colors",
+    "test:coverage": "jest --coverage --colors --watch",
     "start": "nodemon server/index.js",
     "react-dev": "webpack -d --watch",
     "seed": "node ./seed.js"
@@ -58,11 +58,11 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-react": "^7.20.5",
     "eslint-plugin-react-hooks": "^4.0.0",
+    "expect": "^26.4.2",
     "jest": "^26.2.2",
     "style-loader": "^1.2.1",
     "supertest": "^4.0.2",
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12"
   }
-
 }

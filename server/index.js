@@ -44,6 +44,6 @@ app.get('/photos/:id', (req, res) => {
   });
 });
 
-app.listen(3003, () => {
+app.listen(3001, () => {
   console.log('listening on PORT: 3003');
 });
