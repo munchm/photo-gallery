@@ -23,6 +23,12 @@ const Main = (props) => {
         </div>
         <SideBar />
       </div>
+      <div className={classes.close}>
+        <span onClick={props.toggleModal} className={classes.closeText}>
+          Close
+        </span>
+        <i class="fas fa-times" />
+      </div>
     </div>
   );
 };

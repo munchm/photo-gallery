@@ -83,15 +83,15 @@ class App extends React.Component {
     });
   }
   toggleModalPic(evt) {
-    // evt.persist();
-    // console.log(evt);
+    evt.persist();
+    console.log(evt);
     // if (evt.target.localname === 'image') {
     //   return;
     // }
     this.setState((state) => {
       const temp = state.showModal;
       return {
-        showModal: !!temp,
+        showModal: !temp,
       };
     });
   }
@@ -99,7 +99,8 @@ class App extends React.Component {
   render() {
     const { pageBanner, data, currentImage, showModal } = this.state;
     return (
-      <div onClick={this.toggleModal} >
+      <div>
+      <div>
         <div>
           <Header />
           <PhotoList
@@ -107,6 +108,8 @@ class App extends React.Component {
           photos={pageBanner} />
           <Body />
         </div>
+
+      </div>
         {
           showModal
             ? (
@@ -116,10 +119,12 @@ class App extends React.Component {
                 prev={this.decrementModalImage}
                 className={classes.modal}
                 currentImage={currentImage}
+                toggleModal={this.toggleModal}
               />
             )
             : ''
         }
+
       </div>
     );
   }
