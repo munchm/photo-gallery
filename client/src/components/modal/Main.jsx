@@ -27,7 +27,7 @@ const Main = (props) => {
         <span onClick={props.toggleModal} className={classes.closeText}>
           Close
         </span>
-        <i class="fas fa-times" />
+        <i className="fas fa-times" />
       </div>
     </div>
   );
