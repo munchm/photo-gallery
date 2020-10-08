@@ -5,8 +5,8 @@ import classes from '../style/App.module.css';
 const PhotoList = (props) => {
   return (
     <ul className={classes.body} >
-      {props.photos.map((photo, key)=>{
-        return <Photo toggleModal={props.toggleModal} key={key} photo={photo}/>
+      {props.photos.map((photo, key) => {
+        return <Photo setPic={props.setPic} toggleModal={props.toggleModal} key={key} photo={photo}/>
       })
       }
     </ul>

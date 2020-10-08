@@ -22,6 +22,7 @@ class App extends React.Component {
     this.incrementModalImage = this.incrementModalImage.bind(this);
     this.decrementModalImage = this.decrementModalImage.bind(this);
     this.toggleModalPic = this.toggleModalPic.bind(this);
+    this.setCurrentPic = this.setCurrentPic.bind(this);
   }
 
   componentDidMount() {
@@ -37,6 +38,7 @@ class App extends React.Component {
           pageBanner: data[0].imageList.slice(0,4),
           currentImage: data[0].imageList[0],
           imageList: data[0].imageList,
+          reference: React.createRef(),
         });
       });
   }
@@ -83,8 +85,7 @@ class App extends React.Component {
     });
   }
   toggleModalPic(evt) {
-    evt.persist();
-    console.log(evt);
+    evt.persist()
     // if (evt.target.localname === 'image') {
     //   return;
     // }
@@ -96,6 +97,14 @@ class App extends React.Component {
     });
   }
 
+  setCurrentPic(evt) {
+    evt.persist();
+    console.log('working!', evt);
+    this.setState({
+      currentImage: evt.target.currentSrc,
+    });
+  }
+
   render() {
     const { pageBanner, data, currentImage, showModal } = this.state;
     return (
@@ -104,6 +113,9 @@ class App extends React.Component {
         <div>
           <Header />
           <PhotoList
+          setPic={this.setCurrentPic}
+          data={this.state}
+          setCurrentPic={this.setCurrentPic}
           toggleModal={this.toggleModalPic}
           photos={pageBanner} />
           <Body />
