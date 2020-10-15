@@ -32,8 +32,7 @@ An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
 ## API
 
 
-
-### Get top thirty rated photos
+### Get photos for a restaurant
   * GET `/api/restaurants/:id/photos`
 
 **Path Parameters:**
@@ -43,7 +42,6 @@ An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
 
 **Returns:** JSON
 
-TOP 30 RATED PHOTOS
 
 ```json
   [
