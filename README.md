@@ -104,7 +104,7 @@ An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
 ```json
     {
       "user_id": "INTEGER",
-      "rating": "BOOLEAN"
+      "helpful": "BOOLEAN"
     }
 ```
 
