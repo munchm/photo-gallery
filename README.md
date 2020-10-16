@@ -96,7 +96,7 @@ An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
 ```
 
 ### Update photo rating
-  * PATCH `/api/restaurants/:id/photos/:id`
+  * PATCH `/api/restaurants/:id/photoRatings/:id`
 
 **Path Parameters:**
   * first `id` restaurant id
