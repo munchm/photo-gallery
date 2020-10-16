@@ -59,7 +59,10 @@ An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
 ```
 
 ### Add photo
-  * POST `/api/photos`
+  * POST `/api/restaurants/:id/photos`
+  
+**Path Parameters:**
+  * `id` restaurant id
 
 **Success Status Code:** `201`
 
@@ -76,10 +79,11 @@ An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
 
 
 ### Update photo caption
-  * PATCH `/api/photos/:id`
+  * PATCH `/api/restaurants/:id/photos/:id`
 
 **Path Parameters:**
-  * `id` photo id
+  * first `id` restaurant id
+  * second `id` photo id
 
 **Success Status Code:** `204`
 
@@ -92,10 +96,11 @@ An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
 ```
 
 ### Update photo rating
-  * PATCH `/api/photos/:id`
+  * PATCH `/api/restaurants/:id/photos/:id`
 
 **Path Parameters:**
-  * `id` photo id
+  * first `id` restaurant id
+  * second `id` photo id
 
 **Success Status Code:** `204`
 
@@ -109,10 +114,11 @@ An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
 ```
 
 ### Delete photo
-  * DELETE `/api/photos/:id`
+  * DELETE `/api/restaurants/:id/photos/:id`
 
 **Path Parameters:**
-  * `id` photos id
+  * first `id` restaurant id
+  * second `id` photo id
 
 **Success Status Code:** `204`
 
