@@ -1,30 +1,31 @@
-const mongoose = require('mongoose');
-const photo = require('./photo.js');
+const { Pool } = require('pg');
+const config = require('./config.js');
 
-mongoose.connect('mongodb://localhost:27017/photo', { useNewUrlParser: true, useUnifiedTopology: true });
+const pool = new Pool(config);
 
-mongoose.connection.on('connected', () => {
-  console.log('Mongoose default connection open to: 3003');
-});
 
-mongoose.connection.once('open', () => {
-  console.log('MongoDb database connection established successfully!');
-});
+const getRestaurantInfo = (restaurantId, callback) => {
+  pool.query(`SELECT * FROM restaurants WHERE id = ${restaurantId}`, (error, restaurantInfo) => {
+    if (error) {
+      callback(error);
+    } else {
+      callback(null, restaurantInfo.rows);
+    }
+  })
+}
 
-mongoose.connection.on('error', (err) => {
-  console.log(`Mongoose default connection error: ${err}`);
-});
+const getAllPhotosforRestaurant = (restaurantId, callback) => {
+  pool.query(`SELECT * FROM photos WHERE restaurant_id = ${restaurantId}`, (error, photos) => {
+    if (error) {
+      callback(error);
+    } else {
+      callback(null, photos.rows);
+    }
+  })
+}
 
-mongoose.connection.on('disconnected', () => {
-  console.log('Mongoose default connection disconnected');
-});
-
-// const schema = mongoose.Schema({
-//   userName: 'string',
-// });
-
-// const Repo = mongoose.model('Repo', repoSchema);
 
 module.exports = {
-  photo: photo,
-};
+  getRestaurantInfo,
+  getAllPhotosforRestaurant
+}

@@ -30,14 +30,24 @@ class App extends React.Component {
   }
 
   getPhotos() {
-    fetch('/photos/1')
+    let id = window.location.pathname;
+    if (id.length === 1) {
+      id = 1;
+    } else {
+      id = id.slice(1);
+    }
+    fetch(`/restaurants/${id}/photos/`)
       .then((res) => res.json())
       .then((data) => {
+        let photos = [];
+        data.forEach((photo) => {
+          photos.push(photo.photo_url);
+        })
         this.setState({
-          data: data[0],
-          pageBanner: data[0].imageList.slice(0,4),
-          currentImage: data[0].imageList[0],
-          imageList: data[0].imageList,
+          data: data,
+          pageBanner: photos,
+          currentImage: photos[0],
+          imageList: photos,
           reference: React.createRef(),
         });
       });
