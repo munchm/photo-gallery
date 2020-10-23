@@ -17,7 +17,7 @@ export default function () {
   let responses = http.batch([
     [
       'GET',
-      `${BASE_URL}/restaurants/${getRandomNumber(9000000, 10000000)}/photos`,
+      `${BASE_URL}/restaurants/${getRandomNumber(1, 10000000)}/photos`,
       null,
     ],
   ]);

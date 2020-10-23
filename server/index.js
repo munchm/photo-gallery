@@ -41,11 +41,6 @@ app.get('/restaurants/:id/photos', (req, res) => {
   });
 });
 
-// app.post('/restaurants/:id/photos', (req, res) => {
-//   let restaurant_id = req.params.id;
-//   console.log(req.params);
-
-// })
 
 app.get('/*', (req, res) => {
   res.sendFile('/Users/jwildermuth/hackreactor/SDC/photo-gallery/public/index.html');
