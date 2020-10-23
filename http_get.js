@@ -4,12 +4,12 @@ import { getRandomNumber } from './dataGenerators/helperFunctions.js'
 
 export let options = {
   stages: [
-    { duration: '30s', target: 200 }, // below normal load
-    { duration: '30s', target: 300 },
-    { duration: '30s', target: 400 },
-    { duration: '30s', target: 500 },
-    { duration: '30s', target: 600 },
+    { duration: '30s', target: 600 }, // below normal load
     { duration: '30s', target: 700 },
+    { duration: '30s', target: 800 },
+    { duration: '30s', target: 900 },
+    { duration: '30s', target: 1000 },
+    { duration: '30s', target: 1100 },
   ],
 };
 export default function () {
