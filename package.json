@@ -22,7 +22,8 @@
     "test:coverage": "jest --coverage --colors --watch",
     "start": "nodemon server/index.js",
     "react-dev": "webpack -d --watch",
-    "seed": "node ./seed.js"
+    "seed": "node ./seed.js",
+    "stresstest": "k6 run http_get.js"
   },
   "dependencies": {
     "babel-jest": "^26.2.2",
@@ -34,6 +35,7 @@
     "lodash": "^4.17.19",
     "mongodb": "^3.6.0",
     "mongoose": "^5.9.28",
+    "morgan": "^1.10.0",
     "newrelic": "^6.13.2",
     "node-fetch": "^2.6.0",
     "nodemon": "^2.0.4",

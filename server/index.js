@@ -1,13 +1,17 @@
+require('newrelic');
+
 const express = require('express');
 const fs = require('fs');
-const app = express();
-require('newrelic');
-const port = 8080;
-var bodyParser = require('body-parser');
+const bodyParser = require('body-parser');
 const db = require('../db/index.js');
 const path = require('path');
+const morgan = require('morgan');
 
 
+const app = express();
+const port = 8080;
+
+app.use(morgan('short'));
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 app.use(express.json());
