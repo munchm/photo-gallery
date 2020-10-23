@@ -24,4 +24,5 @@ coverage
 build/
 dist/
 db/config.js
+postgres/csvDataFiles
 
