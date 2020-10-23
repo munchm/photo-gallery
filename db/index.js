@@ -25,6 +25,17 @@ const getAllPhotosforRestaurant = (restaurantId, callback) => {
 }
 
 
+const addNewPhoto = (users_id, restaurant_id, photo_url, caption = '', callback) => {
+  pool.query(`INSERT INTO photos (users_id, restaurant_id, photo_url, caption) VALUES (${users_id}, ${restaurant_id}, ${photo_url}, ${caption})`, (error, success) => {
+    if (error) {
+      callback(error);
+    } else {
+      callback(null, success);
+    }
+  })
+}
+
+
 module.exports = {
   getRestaurantInfo,
   getAllPhotosforRestaurant
