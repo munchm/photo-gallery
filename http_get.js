@@ -19,12 +19,7 @@ export let errorRate = new Rate('errors');
 export let options = {
   stages: [
     { duration: "30s", target: 1000 },
-    { duration: "30s", target: 1100 },
-    { duration: "30s", target: 1200 },
-    { duration: "30s", target: 1300 },
-    { duration: "30s", target: 1400 },
-    { duration: "30s", target: 1500 },
-
+    { duration: "30s", target: 900 },
   ],
 };
 
