@@ -28,11 +28,15 @@ export let options = {
   ],
 };
 
-export default function() {
-  var url = `http://localhost:8080/restaurants/${getRandomNumber(1, 10000000)}/photos`;
 
-  check(http.get(url), {
-    'status is 200': r => r.status == 200
-  }) || errorRate.add(1);
-  // sleep(0.5);
+export default function () {
+  const BASE_URL = 'http://localhost:8080'; // make sure this is not production
+  let responses = http.batch([
+    [
+      'GET',
+      `${BASE_URL}/restaurants/${getRandomNumber(1, 10000000)}/photos`,
+    ],
+
+  ]);
 }
+
