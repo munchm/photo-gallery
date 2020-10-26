@@ -23,7 +23,9 @@
     "start": "nodemon --max-old-space-size=8192 server/index.js",
     "react-dev": "webpack -d --watch",
     "seed": "node ./seed.js",
-    "stresstest": "k6 run http_get.js"
+    "stresstest": "k6 run http_get.js",
+    "createAndSeed": "psql postgres < ./postgres/tester.sql"
+
   },
   "dependencies": {
     "babel-jest": "^26.2.2",
