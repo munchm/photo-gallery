@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS restaurants (
 
 CREATE TABLE IF NOT EXISTS photos (
   id             serial,
-  created_at     timestamp NOT NULL DEFAULT Now(),
+  created_at     text NOT NULL DEFAULT Now(),
   users_id       int NOT NULL,
   restaurant_id  int  NOT NULL,
   photo_url      text  NOT NULL,
@@ -44,24 +44,48 @@ CREATE TABLE IF NOT EXISTS photo_ratings (
   PRIMARY KEY(id)
 );
 
+CREATE INDEX ratings_idx ON photos (restaurant_id, users_id,
+rating DESC);
 
-COPY users FROM '/Users/jwildermuth/hackreactor/SDC/sandbox/users1.csv' DELIMITER ',' CSV HEADER;
-COPY users FROM '/Users/jwildermuth/hackreactor/SDC/sandbox/users2.csv' DELIMITER ',' CSV HEADER;
-COPY restaurants FROM '/Users/jwildermuth/hackreactor/SDC/sandbox/restaurants1.csv' DELIMITER ',' CSV HEADER;
-COPY restaurants FROM '/Users/jwildermuth/hackreactor/SDC/sandbox/restaurants2.csv' DELIMITER ',' CSV HEADER;
-COPY photos FROM '/Users/jwildermuth/hackreactor/SDC/sandbox/photos1.csv' DELIMITER ',' CSV HEADER;
-COPY photos FROM '/Users/jwildermuth/hackreactor/SDC/sandbox/photos2.csv' DELIMITER ',' CSV HEADER;
-COPY photos FROM '/Users/jwildermuth/hackreactor/SDC/sandbox/photos3.csv' DELIMITER ',' CSV HEADER;
-COPY photos FROM '/Users/jwildermuth/hackreactor/SDC/sandbox/photos4.csv' DELIMITER ',' CSV HEADER;
-COPY photos FROM '/Users/jwildermuth/hackreactor/SDC/sandbox/photos5.csv' DELIMITER ',' CSV HEADER;
-COPY photos FROM '/Users/jwildermuth/hackreactor/SDC/sandbox/photos6.csv' DELIMITER ',' CSV HEADER;
-COPY photos FROM '/Users/jwildermuth/hackreactor/SDC/sandbox/photos7.csv' DELIMITER ',' CSV HEADER;
-COPY photos FROM '/Users/jwildermuth/hackreactor/SDC/sandbox/photos8.csv' DELIMITER ',' CSV HEADER;
-COPY photos FROM '/Users/jwildermuth/hackreactor/SDC/sandbox/photos9.csv' DELIMITER ',' CSV HEADER;
-COPY photos FROM '/Users/jwildermuth/hackreactor/SDC/sandbox/photos10.csv' DELIMITER ',' CSV HEADER;
+CREATE INDEX rated_idx ON photo_ratings (
+  users_id, photo_id);
 
-COPY photo_ratings FROM '/Users/jwildermuth/hackreactor/SDC/sandbox/photoRatings1.csv' DELIMITER ',' CSV HEADER;
-COPY photo_ratings FROM '/Users/jwildermuth/hackreactor/SDC/sandbox/photoRatings2.csv' DELIMITER ',' CSV HEADER;
+COPY users FROM '/Users/jwildermuth/hackreactor/SDC/photo-gallery/postgres/csvDataFiles/users1.csv' DELIMITER ',' CSV HEADER;
+COPY users FROM '/Users/jwildermuth/hackreactor/SDC/photo-gallery/postgres/csvDataFiles/users2.csv' DELIMITER ',' CSV HEADER;
+COPY restaurants FROM '/Users/jwildermuth/hackreactor/SDC/photo-gallery/postgres/csvDataFiles/restaurants1.csv' DELIMITER ',' CSV HEADER;
+COPY restaurants FROM '/Users/jwildermuth/hackreactor/SDC/photo-gallery/postgres/csvDataFiles/restaurants2.csv' DELIMITER ',' CSV HEADER;
+COPY photos FROM '/Users/jwildermuth/hackreactor/SDC/photo-gallery/postgres/csvDataFiles/photos1.csv' DELIMITER ',' CSV HEADER;
+COPY photos FROM '/Users/jwildermuth/hackreactor/SDC/photo-gallery/postgres/csvDataFiles/photos2.csv' DELIMITER ',' CSV HEADER;
+COPY photos FROM '/Users/jwildermuth/hackreactor/SDC/photo-gallery/postgres/csvDataFiles/photos3.csv' DELIMITER ',' CSV HEADER;
+COPY photos FROM '/Users/jwildermuth/hackreactor/SDC/photo-gallery/postgres/csvDataFiles/photos4.csv' DELIMITER ',' CSV HEADER;
+COPY photos FROM '/Users/jwildermuth/hackreactor/SDC/photo-gallery/postgres/csvDataFiles/photos5.csv' DELIMITER ',' CSV HEADER;
+COPY photos FROM '/Users/jwildermuth/hackreactor/SDC/photo-gallery/postgres/csvDataFiles/photos6.csv' DELIMITER ',' CSV HEADER;
+COPY photos FROM '/Users/jwildermuth/hackreactor/SDC/photo-gallery/postgres/csvDataFiles/photos7.csv' DELIMITER ',' CSV HEADER;
+COPY photos FROM '/Users/jwildermuth/hackreactor/SDC/photo-gallery/postgres/csvDataFiles/photos8.csv' DELIMITER ',' CSV HEADER;
+COPY photos FROM '/Users/jwildermuth/hackreactor/SDC/photo-gallery/postgres/csvDataFiles/photos9.csv' DELIMITER ',' CSV HEADER;
+COPY photos FROM '/Users/jwildermuth/hackreactor/SDC/photo-gallery/postgres/csvDataFiles/photos10.csv' DELIMITER ',' CSV HEADER;
+COPY photos FROM '/Users/jwildermuth/hackreactor/SDC/photo-gallery/postgres/csvDataFiles/photos11.csv' DELIMITER ',' CSV HEADER;
+COPY photos FROM '/Users/jwildermuth/hackreactor/SDC/photo-gallery/postgres/csvDataFiles/photos12.csv' DELIMITER ',' CSV HEADER;
+COPY photos FROM '/Users/jwildermuth/hackreactor/SDC/photo-gallery/postgres/csvDataFiles/photos13.csv' DELIMITER ',' CSV HEADER;
+COPY photos FROM '/Users/jwildermuth/hackreactor/SDC/photo-gallery/postgres/csvDataFiles/photos14.csv' DELIMITER ',' CSV HEADER;
+COPY photos FROM '/Users/jwildermuth/hackreactor/SDC/photo-gallery/postgres/csvDataFiles/photos15.csv' DELIMITER ',' CSV HEADER;
+COPY photos FROM '/Users/jwildermuth/hackreactor/SDC/photo-gallery/postgres/csvDataFiles/photos16.csv' DELIMITER ',' CSV HEADER;
+COPY photos FROM '/Users/jwildermuth/hackreactor/SDC/photo-gallery/postgres/csvDataFiles/photos17.csv' DELIMITER ',' CSV HEADER;
+COPY photos FROM '/Users/jwildermuth/hackreactor/SDC/photo-gallery/postgres/csvDataFiles/photos18.csv' DELIMITER ',' CSV HEADER;
+COPY photos FROM '/Users/jwildermuth/hackreactor/SDC/photo-gallery/postgres/csvDataFiles/photos19.csv' DELIMITER ',' CSV HEADER;
+COPY photos FROM '/Users/jwildermuth/hackreactor/SDC/photo-gallery/postgres/csvDataFiles/photos20.csv' DELIMITER ',' CSV HEADER;
+COPY photos FROM '/Users/jwildermuth/hackreactor/SDC/photo-gallery/postgres/csvDataFiles/photos21.csv' DELIMITER ',' CSV HEADER;
+COPY photos FROM '/Users/jwildermuth/hackreactor/SDC/photo-gallery/postgres/csvDataFiles/photos22.csv' DELIMITER ',' CSV HEADER;
+COPY photos FROM '/Users/jwildermuth/hackreactor/SDC/photo-gallery/postgres/csvDataFiles/photos23.csv' DELIMITER ',' CSV HEADER;
+COPY photos FROM '/Users/jwildermuth/hackreactor/SDC/photo-gallery/postgres/csvDataFiles/photos24.csv' DELIMITER ',' CSV HEADER;
+COPY photos FROM '/Users/jwildermuth/hackreactor/SDC/photo-gallery/postgres/csvDataFiles/photos25.csv' DELIMITER ',' CSV HEADER;
+COPY photos FROM '/Users/jwildermuth/hackreactor/SDC/photo-gallery/postgres/csvDataFiles/photos26.csv' DELIMITER ',' CSV HEADER;
+COPY photos FROM '/Users/jwildermuth/hackreactor/SDC/photo-gallery/postgres/csvDataFiles/photos27.csv' DELIMITER ',' CSV HEADER;
+COPY photos FROM '/Users/jwildermuth/hackreactor/SDC/photo-gallery/postgres/csvDataFiles/photos28.csv' DELIMITER ',' CSV HEADER;
+COPY photos FROM '/Users/jwildermuth/hackreactor/SDC/photo-gallery/postgres/csvDataFiles/photos29.csv' DELIMITER ',' CSV HEADER;
+COPY photos FROM '/Users/jwildermuth/hackreactor/SDC/photo-gallery/postgres/csvDataFiles/photos30.csv' DELIMITER ',' CSV HEADER;
+COPY photo_ratings FROM '/Users/jwildermuth/hackreactor/SDC/photo-gallery/postgres/csvDataFiles/photoRatings1.csv' DELIMITER ',' CSV HEADER;
+COPY photo_ratings FROM '/Users/jwildermuth/hackreactor/SDC/photo-gallery/postgres/csvDataFiles/photoRatings2.csv' DELIMITER ',' CSV HEADER;
 
 ALTER TABLE photos
 ADD CONSTRAINT fk_users
@@ -92,7 +116,6 @@ ADD CONSTRAINT fk_photo
      not VALID;
 
 
--- COPY photos FROM '/Users/jwildermuth/hackreactor/SDC/sandbox/photos3.csv' DELIMITER ',' CSV HEADER;
 
 /*
 command to run file ====> psql postgres < database/postgres/tester.sql

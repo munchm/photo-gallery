@@ -1,49 +1,52 @@
 const express = require('express');
-const path = require('path');
-const model = require('../db');
-
+const fs = require('fs');
 const app = express();
+require('newrelic');
+const port = 8080;
+var bodyParser = require('body-parser');
+const db = require('../db/index.js');
+const path = require('path');
 
+
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
 app.use(express.json());
+
 app.use(express.static(path.join(__dirname, '/../public')));
 
-const getAllPhotos = function(callback) {
-  // need to query the database for all users
-  // this function will be called in a controller triggered by a GET request
-  // need to find how to do it without sqlLite
-  console.log(model.photo)
-  model.photo.find({}, (err, data) => {
-    if (err) {
-      throw err;
+
+app.get('/restaurants/:id', (req, res) => {
+  let restaurantId = req.params.id;
+  db.getRestaurantInfo(restaurantId, (error, restaurantInfo) => {
+    if (error) {
+      res.status(404).send(error);
     } else {
-      callback(data);
+      res.status(200).send(restaurantInfo);
     }
   });
-};
-
-const getPhotoById = (id, callback) => {
-  model.photo.find({photoId: id }, (err, data) => {
-    if(err) {
-      throw err;
-    }
-    else {
-      callback(data);
-    }
-  })
-}
-
-app.get('/', (req, res) => {
-  res.status(201).send('success!');
 });
 
-app.get('/photos/:id', (req, res) => {
-  const pageId = req.params.id;
-  // cosole.log(model.videogame.find)
-  getPhotoById(pageId, (data) => {
-    res.status(200).send(data);
+app.get('/restaurants/:id/photos', (req, res) => {
+  let restaurantId = req.params.id;
+  db.getAllPhotosforRestaurant(restaurantId, (error, photos) => {
+    if (error) {
+      res.status(402).send(error);
+    } else {
+      res.status(200).send(photos);
+    }
   });
 });
 
-app.listen(3001, () => {
-  console.log('listening on PORT: 3003');
-});
+// app.post('/restaurants/:id/photos', (req, res) => {
+//   let restaurant_id = req.params.id;
+//   console.log(req.params);
+
+// })
+
+app.get('/*', (req, res) => {
+  res.sendFile('/Users/jwildermuth/hackreactor/SDC/photo-gallery/public/index.html');
+})
+
+app.listen(port, () => {
+  console.log(`Listening at http://localhost:${port}`);
+})
