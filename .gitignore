@@ -25,4 +25,5 @@ build/
 dist/
 db/config.js
 postgres/csvDataFiles
+newrelic.js
 
