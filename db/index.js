@@ -15,7 +15,10 @@ const getRestaurantInfo = (restaurantId, callback) => {
 }
 
 const getAllPhotosforRestaurant = (restaurantId, callback) => {
+  const start = process.hrtime();
   pool.query(`SELECT * FROM photos WHERE restaurant_id = ${restaurantId}`, (error, photos) => {
+    const stop = process.hrtime(start);// [seconds, nanoseconds]
+    console.log('QUERY:', stop[1] / 1000000); // ms
     if (error) {
       callback(error);
     } else {

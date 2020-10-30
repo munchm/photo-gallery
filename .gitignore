@@ -1,3 +1,5 @@
+public/loader*
+nohup.out
 ## MAC files ##
 .DS_Store
 

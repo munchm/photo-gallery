@@ -20,7 +20,7 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage --colors --watch",
-    "start": "nodemon --max-old-space-size=8192 server/index.js",
+    "start": "node server/index.js",
     "react-dev": "webpack -d --watch",
     "seed": "node ./seed.js",
     "stresstest": "k6 run http_get.js"
@@ -44,7 +44,8 @@
     "prop-types": "^15.7.2",
     "puppeteer-core": "^5.2.1",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "redis": "^3.0.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.10.5",
